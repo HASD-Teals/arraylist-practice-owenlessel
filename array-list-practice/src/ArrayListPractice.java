@@ -19,11 +19,15 @@ public class ArrayListPractice {
 
         myList.set(2, "Crab");
 
-        myList.add("Dog");
+        // myList.add("Dog");
 
         System.out.println(myList);
 
-        removeDuplicates(myList);
+        // removeDuplicates(myList);
+
+        doubleList(myList);
+
+        System.out.println(myList);
 
         // System.out.println(noDupList);
         // myList.remove(1);
@@ -44,6 +48,18 @@ public class ArrayListPractice {
 
         // int lengthAnimalname = (myList.get(1)).toString().length();
         // System.out.println(lengthAnimalname);
+
+        List intList = new ArrayList<Integer>();
+        intList.add(9);
+        intList.add(3);
+        intList.add(1);
+        intList.add(8);
+
+        System.out.println(intList);
+
+        minToFront(intList);
+
+        System.out.println(intList);
     }
 
     public static void removeEvenLength(List<String> myList) {
@@ -71,7 +87,35 @@ public class ArrayListPractice {
     }
 
     public static void removeDuplicates(List<String> myList) {
-        List noDupList = new ArrayList<String>();
+        for (int i = 0; i < myList.size(); i++) {
+            for (int j = i + 1; j < myList.size(); j++)
+                if (myList.get(i).equals(myList.get(j))) {
+                    myList.remove(j);
+                    j--;
+                }
+        }
+    }
 
+    public static void doubleList(List<String> myList) {
+        for (int i = 0; i < myList.size(); i++) {
+            myList.add(i, myList.get(i));
+            i++;
+        }
+    }
+
+    public static void minToFront(List<Integer> intList) {
+        int minValue = intList.get(0);
+        for (int i = 0; i < intList.size(); i++) {
+            if (intList.get(i) < minValue) {
+                minValue = intList.get(i);
+            }
+
+        }
+        for(int i=0;i<intList.size();i++){
+            if(intList.get(i).equals(minValue)){
+                intList.remove(i);
+            }
+        }
+        intList.add(0,minValue);
     }
 }
